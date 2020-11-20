@@ -16,6 +16,5 @@ More information on recent changes [HERE](./CHANGELOG.md).
 ## Usage examples
 
 * https://github.com/LANFest/binary-chromedriver
-* https://github.com/vaimo/binary-geckodriver
-* https://github.com/vaimo/binary-edgedriver
-* https://github.com/vaimo/binary-phantomjs
+* https://github.com/LANFest/binary-geckodriver
+* https://github.com/LANFest/binary-edgedriver
