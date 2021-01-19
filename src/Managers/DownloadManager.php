@@ -2,9 +2,9 @@
 
 namespace Lanfest\WebDriverBinaryDownloader\Managers;
 
-use Lanfest\WebDriverBinaryDownloader\Interfaces\ConfigInterface;
-use Composer\Util\HttpDownloader;
+use Composer\Plugin\PluginInterface;
 use Composer\Util\SyncHelper;
+use Lanfest\WebDriverBinaryDownloader\Interfaces\ConfigInterface;
 
 class DownloadManager
 {
@@ -133,12 +133,9 @@ class DownloadManager
                 array($executableName)
             );
 
-            SyncHelper::downloadAndInstallPackageSync(
-                $this->composer->getLoop(),
-                $this->composer->getDownloadManager()->getDownloader('zip'),
-                $fullPath,
-                $package
-            );
+            if (!$this->downloadAndInstallPackageSync($package, $fullPath)) {
+                continue;
+            }
 
             return $package;
         }
@@ -179,4 +176,75 @@ class DownloadManager
             array_replace($variables, array('file' => $fileName))
         );
     }
+
+    /**
+     * Downloads specific package into specific folder.
+     *
+     * @param \Composer\Package\PackageInterface $package
+     * @param string $path
+     *
+     * @return bool
+     */
+    private function downloadAndInstallPackageSync(
+      \Composer\Package\PackageInterface $package,
+      string $path
+    ) {
+        $composerVersion = PluginInterface::PLUGIN_API_VERSION;
+        if (version_compare($composerVersion, '2.0.0', '>=')) {
+            return $this->downloadAndInstallPackageSyncComposer2($package, $path);
+        }
+
+        return $this->downloadAndInstallPackageSyncComposer1($package, $path);
+    }
+
+    /**
+     * Downloads specific package into specific folder (Composer 1).
+     *
+     * @param \Composer\Package\PackageInterface $package
+     * @param string $path
+     *
+     * @return bool
+     */
+    private function downloadAndInstallPackageSyncComposer1(
+      \Composer\Package\PackageInterface $package,
+      string $path
+    ) {
+        $downloader = $this->downloadManager->getDownloaderForInstalledPackage($package);
+
+        if ($downloader === null) {
+            return false;
+        }
+
+        /**
+         * Some downloader types have the option to mute the output,
+         * which is why there is the third call argument (not present
+         * in interface footprint).
+         */
+        $downloader->download($package, $path, false);
+
+        return true;
+    }
+
+    /**
+     * Downloads specific package into specific folder (Composer 2).
+     *
+     * @param \Composer\Package\PackageInterface $package
+     * @param string $path
+     *
+     * @return bool
+     */
+    private function downloadAndInstallPackageSyncComposer2(
+      \Composer\Package\PackageInterface $package,
+      string $path
+    ) {
+        SyncHelper::downloadAndInstallPackageSync(
+            $this->composer->getLoop(),
+            $this->downloadManager->getDownloader('zip'),
+            $path,
+            $package
+        );
+
+        return true;
+    }
+
 }
