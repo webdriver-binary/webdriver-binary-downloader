@@ -24,10 +24,10 @@ class StringUtils
     {
         try {
             $cutOff = strpos($value, '.', $offset);
-        } catch (\Exception $exception) {
+        } catch (\Throwable $exception) {
             $cutOff = 0;
         }
-        
+
         return substr($value, 0, $cutOff ?: strlen($value));
     }
 }
