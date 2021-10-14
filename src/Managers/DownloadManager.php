@@ -1,10 +1,10 @@
 <?php
 
-namespace Lanfest\WebDriverBinaryDownloader\Managers;
+namespace WebDriverBinaryDownloader\Managers;
 
 use Composer\Plugin\PluginInterface;
 use Composer\Util\SyncHelper;
-use Lanfest\WebDriverBinaryDownloader\Interfaces\ConfigInterface;
+use WebDriverBinaryDownloader\Interfaces\ConfigInterface;
 
 class DownloadManager
 {
@@ -29,32 +29,32 @@ class DownloadManager
     private $cacheManager;
 
     /**
-     * @var \Lanfest\WebDriverBinaryDownloader\Factories\DriverPackageFactory
+     * @var \WebDriverBinaryDownloader\Factories\DriverPackageFactory
      */
     private $driverPkgFactory;
 
     /**
-     * @var \Lanfest\WebDriverBinaryDownloader\Interfaces\ConfigInterface
+     * @var \WebDriverBinaryDownloader\Interfaces\ConfigInterface
      */
     private $pluginConfig;
 
     /**
-     * @var \Lanfest\WebDriverBinaryDownloader\Analysers\PlatformAnalyser
+     * @var \WebDriverBinaryDownloader\Analysers\PlatformAnalyser
      */
     private $platformAnalyser;
 
     /**
-     * @var \Lanfest\WebDriverBinaryDownloader\Utils\SystemUtils
+     * @var \WebDriverBinaryDownloader\Utils\SystemUtils
      */
     private $systemUtils;
 
     /**
-     * @var \Lanfest\WebDriverBinaryDownloader\Utils\DataUtils
+     * @var \WebDriverBinaryDownloader\Utils\DataUtils
      */
     private $dataUtils;
 
     /**
-     * @var \Lanfest\WebDriverBinaryDownloader\Utils\StringUtils
+     * @var \WebDriverBinaryDownloader\Utils\StringUtils
      */
     private $stringUtils;
 
@@ -68,16 +68,16 @@ class DownloadManager
      * @param \Composer\Downloader\DownloadManager $downloadManager
      * @param \Composer\Installer\InstallationManager $installationManager
      * @param \Composer\Cache $cacheManager
-     * @param \Lanfest\WebDriverBinaryDownloader\Factories\DriverPackageFactory $driverPkgFactory
-     * @param \Lanfest\WebDriverBinaryDownloader\Interfaces\ConfigInterface $pluginConfig
+     * @param \WebDriverBinaryDownloader\Factories\DriverPackageFactory $driverPkgFactory
+     * @param \WebDriverBinaryDownloader\Interfaces\ConfigInterface $pluginConfig
      */
     public function __construct(
         \Composer\Package\CompletePackage $ownerPackage,
         \Composer\Downloader\DownloadManager $downloadManager,
         \Composer\Installer\InstallationManager $installationManager,
         \Composer\Cache $cacheManager,
-        \Lanfest\WebDriverBinaryDownloader\Factories\DriverPackageFactory $driverPkgFactory,
-        \Lanfest\WebDriverBinaryDownloader\Interfaces\ConfigInterface $pluginConfig,
+        \WebDriverBinaryDownloader\Factories\DriverPackageFactory $driverPkgFactory,
+        \WebDriverBinaryDownloader\Interfaces\ConfigInterface $pluginConfig,
         \Composer\Composer $composer
     ) {
         $this->ownerPackage = $ownerPackage;
@@ -88,10 +88,10 @@ class DownloadManager
         $this->pluginConfig = $pluginConfig;
         $this->composer = $composer;
 
-        $this->platformAnalyser = new \Lanfest\WebDriverBinaryDownloader\Analysers\PlatformAnalyser();
-        $this->systemUtils = new \Lanfest\WebDriverBinaryDownloader\Utils\SystemUtils();
-        $this->dataUtils = new \Lanfest\WebDriverBinaryDownloader\Utils\DataUtils();
-        $this->stringUtils = new \Lanfest\WebDriverBinaryDownloader\Utils\StringUtils();
+        $this->platformAnalyser = new \WebDriverBinaryDownloader\Analysers\PlatformAnalyser();
+        $this->systemUtils = new \WebDriverBinaryDownloader\Utils\SystemUtils();
+        $this->dataUtils = new \WebDriverBinaryDownloader\Utils\DataUtils();
+        $this->stringUtils = new \WebDriverBinaryDownloader\Utils\StringUtils();
     }
 
     public function downloadRelease(array $versions)
@@ -107,7 +107,7 @@ class DownloadManager
         if (!$executableName) {
             $platformName = $this->platformAnalyser->getPlatformName();
 
-            throw new \Lanfest\WebDriverBinaryDownloader\Exceptions\PlatformNotSupportedException(
+            throw new \WebDriverBinaryDownloader\Exceptions\PlatformNotSupportedException(
                 sprintf('The package %s does not support platform: %s', $ownerName, $platformName)
             );
         }

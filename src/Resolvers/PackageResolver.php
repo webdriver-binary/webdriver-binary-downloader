@@ -1,6 +1,6 @@
 <?php
 
-namespace Lanfest\WebDriverBinaryDownloader\Resolvers;
+namespace WebDriverBinaryDownloader\Resolvers;
 
 class PackageResolver
 {
@@ -10,7 +10,7 @@ class PackageResolver
     private $additionalPackages;
 
     /**
-     * @var \Lanfest\WebDriverBinaryDownloader\Analysers\PackageAnalyser
+     * @var \WebDriverBinaryDownloader\Analysers\PackageAnalyser
      */
     private $packageAnalyser;
 
@@ -22,7 +22,7 @@ class PackageResolver
     ) {
         $this->additionalPackages = $additionalPackages;
 
-        $this->packageAnalyser = new \Lanfest\WebDriverBinaryDownloader\Analysers\PackageAnalyser();
+        $this->packageAnalyser = new \WebDriverBinaryDownloader\Analysers\PackageAnalyser();
     }
 
     
@@ -41,7 +41,7 @@ class PackageResolver
             return $package;
         }
 
-        throw new \Lanfest\WebDriverBinaryDownloader\Exceptions\RuntimeException(
+        throw new \WebDriverBinaryDownloader\Exceptions\RuntimeException(
             'Failed to detect the plugin package'
         );
     }

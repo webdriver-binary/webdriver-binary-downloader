@@ -1,19 +1,19 @@
 <?php
 
-namespace Lanfest\WebDriverBinaryDownloader\Analysers;
+namespace WebDriverBinaryDownloader\Analysers;
 
-use Lanfest\WebDriverBinaryDownloader\Composer\Config as ComposerConfig;
+use WebDriverBinaryDownloader\Composer\Config as ComposerConfig;
 
 class PackageAnalyser
 {
     /**
-     * @var \Lanfest\WebDriverBinaryDownloader\Utils\DataUtils
+     * @var \WebDriverBinaryDownloader\Utils\DataUtils
      */
     private $dataUtils;
     
     public function __construct()
     {
-        $this->dataUtils = new \Lanfest\WebDriverBinaryDownloader\Utils\DataUtils();
+        $this->dataUtils = new \WebDriverBinaryDownloader\Utils\DataUtils();
     }
 
     public function isPluginPackage(\Composer\Package\PackageInterface $package)

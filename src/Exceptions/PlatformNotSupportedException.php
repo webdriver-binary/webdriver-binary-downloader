@@ -1,6 +1,6 @@
 <?php
 
-namespace Lanfest\WebDriverBinaryDownloader\Exceptions;
+namespace WebDriverBinaryDownloader\Exceptions;
 
 class PlatformNotSupportedException extends \Exception
 {

@@ -1,14 +1,14 @@
 <?php
 
-namespace Lanfest\WebDriverBinaryDownloader\Managers;
+namespace WebDriverBinaryDownloader\Managers;
 
 use Composer\Package\PackageInterface;
-use Lanfest\WebDriverBinaryDownloader\Analysers\PlatformAnalyser as OsDetector;
+use WebDriverBinaryDownloader\Analysers\PlatformAnalyser as OsDetector;
 
 class PackageManager
 {
     /**
-     * @var \Lanfest\WebDriverBinaryDownloader\Interfaces\ConfigInterface
+     * @var \WebDriverBinaryDownloader\Interfaces\ConfigInterface
      */
     private $pluginConfig;
 
@@ -18,17 +18,17 @@ class PackageManager
     private $fileSystem;
 
     /**
-     * @var \Lanfest\WebDriverBinaryDownloader\Analysers\PlatformAnalyser
+     * @var \WebDriverBinaryDownloader\Analysers\PlatformAnalyser
      */
     private $platformAnalyser;
 
     /**
-     * @var \Lanfest\WebDriverBinaryDownloader\Utils\SystemUtils
+     * @var \WebDriverBinaryDownloader\Utils\SystemUtils
      */
     private $systemUtils;
 
     /**
-     * @var \Lanfest\WebDriverBinaryDownloader\Utils\DataUtils
+     * @var \WebDriverBinaryDownloader\Utils\DataUtils
      */
     private $dataUtils;
 
@@ -38,11 +38,11 @@ class PackageManager
     private $vendorDir;
 
     /**
-     * @param \Lanfest\WebDriverBinaryDownloader\Interfaces\ConfigInterface $pluginConfig
+     * @param \WebDriverBinaryDownloader\Interfaces\ConfigInterface $pluginConfig
      * @param string $vendorDir
      */
     public function __construct(
-        \Lanfest\WebDriverBinaryDownloader\Interfaces\ConfigInterface $pluginConfig,
+        \WebDriverBinaryDownloader\Interfaces\ConfigInterface $pluginConfig,
         $vendorDir
     ) {
         $this->pluginConfig = $pluginConfig;
@@ -50,10 +50,10 @@ class PackageManager
 
         $this->fileSystem = new \Composer\Util\Filesystem();
 
-        $this->platformAnalyser = new \Lanfest\WebDriverBinaryDownloader\Analysers\PlatformAnalyser();
+        $this->platformAnalyser = new \WebDriverBinaryDownloader\Analysers\PlatformAnalyser();
 
-        $this->systemUtils = new \Lanfest\WebDriverBinaryDownloader\Utils\SystemUtils();
-        $this->dataUtils = new \Lanfest\WebDriverBinaryDownloader\Utils\DataUtils();
+        $this->systemUtils = new \WebDriverBinaryDownloader\Utils\SystemUtils();
+        $this->dataUtils = new \WebDriverBinaryDownloader\Utils\DataUtils();
     }
 
     /**

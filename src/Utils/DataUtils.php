@@ -1,6 +1,6 @@
 <?php
 
-namespace Lanfest\WebDriverBinaryDownloader\Utils;
+namespace WebDriverBinaryDownloader\Utils;
 
 class DataUtils
 {

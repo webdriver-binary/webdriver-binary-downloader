@@ -1,6 +1,6 @@
 <?php
 
-namespace Lanfest\WebDriverBinaryDownloader\Composer;
+namespace WebDriverBinaryDownloader\Composer;
 
 class Config
 {

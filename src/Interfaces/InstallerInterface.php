@@ -1,8 +1,8 @@
 <?php
 
-namespace Lanfest\WebDriverBinaryDownloader\Interfaces;
+namespace WebDriverBinaryDownloader\Interfaces;
 
-use Lanfest\WebDriverBinaryDownloader\Interfaces\ConfigInterface as Config;
+use WebDriverBinaryDownloader\Interfaces\ConfigInterface as Config;
 
 interface InstallerInterface
 {

@@ -1,5 +1,5 @@
 {
-    "name": "lanfest/webdriver-binary-downloader",
+    "name": "webdriver-binary/webdriver-binary-downloader",
     "type": "library",
     "license": "MIT",
     "description": "General-issue library that enables building any kind of WebDriver binary downloader",
@@ -10,23 +10,18 @@
     },
     "replace": {
         "vaimo/webdriver-binary-downloader": "*",
-        "bolt/webdriver-binary-downloader": "*"
+        "bolt/webdriver-binary-downloader": "*",
+        "lanfest/webdriver-binary-downloader": "*"
     },
     "config": {
         "platform": {
-            "php": "7.2.9"
+            "php": "7.4"
         }
     },
-    "authors": [
-        {
-            "name": "Jakob Perry",
-            "email": "jakob.perry@lfest.org"
-        }
-    ],
     "support": {
-        "source": "https://github.com/LANFest/webdriver-binary-downloader",
-        "docs": "https://github.com/LANFest/webdriver-binary-downloader",
-        "issues": "https://github.com/LANFest/webdriver-binary-downloader/issues"
+        "source": "https://github.com/webdriver-binary/webdriver-binary-downloader",
+        "docs": "https://github.com/webdriver-binary/webdriver-binary-downloader",
+        "issues": "https://github.com/webdriver-binary/webdriver-binary-downloader/issues"
     },
     "keywords": [
         "browser driver",
@@ -37,7 +32,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "Lanfest\\WebDriverBinaryDownloader\\": "src"
+            "WebDriverBinaryDownloader\\": "src"
         }
     }
 }

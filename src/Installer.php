@@ -1,11 +1,11 @@
 <?php
 
-namespace Lanfest\WebDriverBinaryDownloader;
+namespace WebDriverBinaryDownloader;
 
-use Lanfest\WebDriverBinaryDownloader\Interfaces\ConfigInterface;
-use Lanfest\WebDriverBinaryDownloader\Composer\Config;
+use WebDriverBinaryDownloader\Interfaces\ConfigInterface;
+use WebDriverBinaryDownloader\Composer\Config;
 
-class Installer implements \Lanfest\WebDriverBinaryDownloader\Interfaces\InstallerInterface
+class Installer implements \WebDriverBinaryDownloader\Interfaces\InstallerInterface
 {
     /**
      * @var \Composer\Composer
@@ -31,13 +31,13 @@ class Installer implements \Lanfest\WebDriverBinaryDownloader\Interfaces\Install
     
     public function executeWithConfig(ConfigInterface $pluginConfig)
     {
-        $composerCtxFactory = new \Lanfest\WebDriverBinaryDownloader\Factories\ComposerContextFactory(
+        $composerCtxFactory = new \WebDriverBinaryDownloader\Factories\ComposerContextFactory(
             $this->composerRuntime
         );
 
         $composerCtx = $composerCtxFactory->create();
 
-        $downloadStrategy = new \Lanfest\WebDriverBinaryDownloader\Strategies\DownloadStrategy($composerCtx);
+        $downloadStrategy = new \WebDriverBinaryDownloader\Strategies\DownloadStrategy($composerCtx);
 
         if (!$downloadStrategy->shouldAllow()) {
             return;
@@ -47,12 +47,12 @@ class Installer implements \Lanfest\WebDriverBinaryDownloader\Interfaces\Install
         
         $binaryDir = $composerConfig->get(Config::BIN_DIR);
         
-        $projectAnalyser = new \Lanfest\WebDriverBinaryDownloader\Analysers\ProjectAnalyser(
+        $projectAnalyser = new \WebDriverBinaryDownloader\Analysers\ProjectAnalyser(
             $pluginConfig,
             $this->cliIO->isDebug() ? $this->cliIO : null
         );
         
-        $packageManager = new \Lanfest\WebDriverBinaryDownloader\Managers\PackageManager(
+        $packageManager = new \WebDriverBinaryDownloader\Managers\PackageManager(
             $pluginConfig,
             $composerConfig->get(Config::VENDOR_DIR)
         );
@@ -87,7 +87,7 @@ class Installer implements \Lanfest\WebDriverBinaryDownloader\Interfaces\Install
             sprintf('<info>Installing <comment>%s</comment> (v%s)</info>', $driverName, $version)
         );
         
-        $dlManagerFactory = new \Lanfest\WebDriverBinaryDownloader\Factories\DownloadManagerFactory(
+        $dlManagerFactory = new \WebDriverBinaryDownloader\Factories\DownloadManagerFactory(
             $composerCtx,
             $this->cliIO,
             $this->composerRuntime
