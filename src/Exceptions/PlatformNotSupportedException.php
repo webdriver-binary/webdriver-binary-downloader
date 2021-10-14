@@ -1,6 +1,6 @@
 <?php
 
-namespace WebDriverBinaryDownloader\Exceptions;
+namespace WebdriverBinary\WebDriverBinaryDownloader\Exceptions;
 
 class PlatformNotSupportedException extends \Exception
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace WebDriverBinaryDownloader\Composer;
+namespace WebdriverBinary\WebDriverBinaryDownloader\Composer;
 
 class Config
 {

@@ -1,13 +1,13 @@
 <?php
 
-namespace WebDriverBinaryDownloader\Factories;
+namespace WebdriverBinary\WebDriverBinaryDownloader\Factories;
 
-use WebDriverBinaryDownloader\Interfaces\ConfigInterface;
+use WebdriverBinary\WebDriverBinaryDownloader\Interfaces\ConfigInterface;
 
 class DownloadManagerFactory
 {
     /**
-     * @var \WebDriverBinaryDownloader\Composer\Context
+     * @var \WebdriverBinary\WebDriverBinaryDownloader\Composer\Context
      */
     private $composerContext;
 
@@ -22,15 +22,15 @@ class DownloadManagerFactory
     private $cliIO;
 
     /**
-     * @var \WebDriverBinaryDownloader\Utils\SystemUtils
+     * @var \WebdriverBinary\WebDriverBinaryDownloader\Utils\SystemUtils
      */
     private $systemUtils;
 
     /**
-     * @param \WebDriverBinaryDownloader\Composer\Context $composerContext
+     * @param \WebdriverBinary\WebDriverBinaryDownloader\Composer\Context $composerContext
      */
     public function __construct(
-        \WebDriverBinaryDownloader\Composer\Context $composerContext,
+        \WebdriverBinary\WebDriverBinaryDownloader\Composer\Context $composerContext,
         \Composer\IO\IOInterface $cliIO,
         \Composer\Composer $composer
     ) {
@@ -38,14 +38,14 @@ class DownloadManagerFactory
         $this->cliIO = $cliIO;
         $this->composer = $composer;
 
-        $this->systemUtils = new \WebDriverBinaryDownloader\Utils\SystemUtils();
+        $this->systemUtils = new \WebdriverBinary\WebDriverBinaryDownloader\Utils\SystemUtils();
     }
 
     public function create(ConfigInterface $pluginConfig)
     {
         $composer = $this->composerContext->getLocalComposer();
         $packages = $this->composerContext->getActivePackages();
-        $packageResolver = new \WebDriverBinaryDownloader\Resolvers\PackageResolver(
+        $packageResolver = new \WebdriverBinary\WebDriverBinaryDownloader\Resolvers\PackageResolver(
             array($composer->getPackage())
         );
         $pluginPackage = $packageResolver->resolveForNamespace(
@@ -53,12 +53,12 @@ class DownloadManagerFactory
             get_class($pluginConfig)
         );
 
-        return new \WebDriverBinaryDownloader\Managers\DownloadManager(
+        return new \WebdriverBinary\WebDriverBinaryDownloader\Managers\DownloadManager(
             $pluginPackage,
             $composer->getDownloadManager(),
             $composer->getInstallationManager(),
             $this->createCacheManager($composer, $pluginPackage->getName()),
-            new \WebDriverBinaryDownloader\Factories\DriverPackageFactory(),
+            new \WebdriverBinary\WebDriverBinaryDownloader\Factories\DriverPackageFactory(),
             $pluginConfig,
             $this->composer
         );

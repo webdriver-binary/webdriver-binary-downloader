@@ -1,10 +1,10 @@
 <?php
 
-namespace WebDriverBinaryDownloader\Managers;
+namespace WebdriverBinary\WebDriverBinaryDownloader\Managers;
 
 use Composer\Plugin\PluginInterface;
 use Composer\Util\SyncHelper;
-use WebDriverBinaryDownloader\Interfaces\ConfigInterface;
+use WebdriverBinary\WebDriverBinaryDownloader\Interfaces\ConfigInterface;
 
 class DownloadManager
 {
@@ -29,32 +29,32 @@ class DownloadManager
     private $cacheManager;
 
     /**
-     * @var \WebDriverBinaryDownloader\Factories\DriverPackageFactory
+     * @var \WebdriverBinary\WebDriverBinaryDownloader\Factories\DriverPackageFactory
      */
     private $driverPkgFactory;
 
     /**
-     * @var \WebDriverBinaryDownloader\Interfaces\ConfigInterface
+     * @var \WebdriverBinary\WebDriverBinaryDownloader\Interfaces\ConfigInterface
      */
     private $pluginConfig;
 
     /**
-     * @var \WebDriverBinaryDownloader\Analysers\PlatformAnalyser
+     * @var \WebdriverBinary\WebDriverBinaryDownloader\Analysers\PlatformAnalyser
      */
     private $platformAnalyser;
 
     /**
-     * @var \WebDriverBinaryDownloader\Utils\SystemUtils
+     * @var \WebdriverBinary\WebDriverBinaryDownloader\Utils\SystemUtils
      */
     private $systemUtils;
 
     /**
-     * @var \WebDriverBinaryDownloader\Utils\DataUtils
+     * @var \WebdriverBinary\WebDriverBinaryDownloader\Utils\DataUtils
      */
     private $dataUtils;
 
     /**
-     * @var \WebDriverBinaryDownloader\Utils\StringUtils
+     * @var \WebdriverBinary\WebDriverBinaryDownloader\Utils\StringUtils
      */
     private $stringUtils;
 
@@ -68,16 +68,16 @@ class DownloadManager
      * @param \Composer\Downloader\DownloadManager $downloadManager
      * @param \Composer\Installer\InstallationManager $installationManager
      * @param \Composer\Cache $cacheManager
-     * @param \WebDriverBinaryDownloader\Factories\DriverPackageFactory $driverPkgFactory
-     * @param \WebDriverBinaryDownloader\Interfaces\ConfigInterface $pluginConfig
+     * @param \WebdriverBinary\WebDriverBinaryDownloader\Factories\DriverPackageFactory $driverPkgFactory
+     * @param \WebdriverBinary\WebDriverBinaryDownloader\Interfaces\ConfigInterface $pluginConfig
      */
     public function __construct(
         \Composer\Package\CompletePackage $ownerPackage,
         \Composer\Downloader\DownloadManager $downloadManager,
         \Composer\Installer\InstallationManager $installationManager,
         \Composer\Cache $cacheManager,
-        \WebDriverBinaryDownloader\Factories\DriverPackageFactory $driverPkgFactory,
-        \WebDriverBinaryDownloader\Interfaces\ConfigInterface $pluginConfig,
+        \WebdriverBinary\WebDriverBinaryDownloader\Factories\DriverPackageFactory $driverPkgFactory,
+        \WebdriverBinary\WebDriverBinaryDownloader\Interfaces\ConfigInterface $pluginConfig,
         \Composer\Composer $composer
     ) {
         $this->ownerPackage = $ownerPackage;
@@ -88,10 +88,10 @@ class DownloadManager
         $this->pluginConfig = $pluginConfig;
         $this->composer = $composer;
 
-        $this->platformAnalyser = new \WebDriverBinaryDownloader\Analysers\PlatformAnalyser();
-        $this->systemUtils = new \WebDriverBinaryDownloader\Utils\SystemUtils();
-        $this->dataUtils = new \WebDriverBinaryDownloader\Utils\DataUtils();
-        $this->stringUtils = new \WebDriverBinaryDownloader\Utils\StringUtils();
+        $this->platformAnalyser = new \WebdriverBinary\WebDriverBinaryDownloader\Analysers\PlatformAnalyser();
+        $this->systemUtils = new \WebdriverBinary\WebDriverBinaryDownloader\Utils\SystemUtils();
+        $this->dataUtils = new \WebdriverBinary\WebDriverBinaryDownloader\Utils\DataUtils();
+        $this->stringUtils = new \WebdriverBinary\WebDriverBinaryDownloader\Utils\StringUtils();
     }
 
     public function downloadRelease(array $versions)
@@ -107,7 +107,7 @@ class DownloadManager
         if (!$executableName) {
             $platformName = $this->platformAnalyser->getPlatformName();
 
-            throw new \WebDriverBinaryDownloader\Exceptions\PlatformNotSupportedException(
+            throw new \WebdriverBinary\WebDriverBinaryDownloader\Exceptions\PlatformNotSupportedException(
                 sprintf('The package %s does not support platform: %s', $ownerName, $platformName)
             );
         }

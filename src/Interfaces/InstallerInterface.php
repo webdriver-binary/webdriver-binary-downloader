@@ -1,8 +1,8 @@
 <?php
 
-namespace WebDriverBinaryDownloader\Interfaces;
+namespace WebdriverBinary\WebDriverBinaryDownloader\Interfaces;
 
-use WebDriverBinaryDownloader\Interfaces\ConfigInterface as Config;
+use WebdriverBinary\WebDriverBinaryDownloader\Interfaces\ConfigInterface as Config;
 
 interface InstallerInterface
 {

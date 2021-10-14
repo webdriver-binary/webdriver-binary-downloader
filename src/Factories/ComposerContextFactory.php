@@ -1,6 +1,6 @@
 <?php
 
-namespace WebDriverBinaryDownloader\Factories;
+namespace WebdriverBinary\WebDriverBinaryDownloader\Factories;
 
 class ComposerContextFactory
 {
@@ -38,7 +38,7 @@ class ComposerContextFactory
 
         array_unshift($instances, self::$globalComposer);
 
-        return new \WebDriverBinaryDownloader\Composer\Context(
+        return new \WebdriverBinary\WebDriverBinaryDownloader\Composer\Context(
             array_filter($instances)
         );
     }

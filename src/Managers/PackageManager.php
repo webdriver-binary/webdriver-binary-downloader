@@ -1,14 +1,14 @@
 <?php
 
-namespace WebDriverBinaryDownloader\Managers;
+namespace WebdriverBinary\WebDriverBinaryDownloader\Managers;
 
 use Composer\Package\PackageInterface;
-use WebDriverBinaryDownloader\Analysers\PlatformAnalyser as OsDetector;
+use WebdriverBinary\WebDriverBinaryDownloader\Analysers\PlatformAnalyser as OsDetector;
 
 class PackageManager
 {
     /**
-     * @var \WebDriverBinaryDownloader\Interfaces\ConfigInterface
+     * @var \WebdriverBinary\WebDriverBinaryDownloader\Interfaces\ConfigInterface
      */
     private $pluginConfig;
 
@@ -18,17 +18,17 @@ class PackageManager
     private $fileSystem;
 
     /**
-     * @var \WebDriverBinaryDownloader\Analysers\PlatformAnalyser
+     * @var \WebdriverBinary\WebDriverBinaryDownloader\Analysers\PlatformAnalyser
      */
     private $platformAnalyser;
 
     /**
-     * @var \WebDriverBinaryDownloader\Utils\SystemUtils
+     * @var \WebdriverBinary\WebDriverBinaryDownloader\Utils\SystemUtils
      */
     private $systemUtils;
 
     /**
-     * @var \WebDriverBinaryDownloader\Utils\DataUtils
+     * @var \WebdriverBinary\WebDriverBinaryDownloader\Utils\DataUtils
      */
     private $dataUtils;
 
@@ -38,11 +38,11 @@ class PackageManager
     private $vendorDir;
 
     /**
-     * @param \WebDriverBinaryDownloader\Interfaces\ConfigInterface $pluginConfig
+     * @param \WebdriverBinary\WebDriverBinaryDownloader\Interfaces\ConfigInterface $pluginConfig
      * @param string $vendorDir
      */
     public function __construct(
-        \WebDriverBinaryDownloader\Interfaces\ConfigInterface $pluginConfig,
+        \WebdriverBinary\WebDriverBinaryDownloader\Interfaces\ConfigInterface $pluginConfig,
         $vendorDir
     ) {
         $this->pluginConfig = $pluginConfig;
@@ -50,10 +50,10 @@ class PackageManager
 
         $this->fileSystem = new \Composer\Util\Filesystem();
 
-        $this->platformAnalyser = new \WebDriverBinaryDownloader\Analysers\PlatformAnalyser();
+        $this->platformAnalyser = new \WebdriverBinary\WebDriverBinaryDownloader\Analysers\PlatformAnalyser();
 
-        $this->systemUtils = new \WebDriverBinaryDownloader\Utils\SystemUtils();
-        $this->dataUtils = new \WebDriverBinaryDownloader\Utils\DataUtils();
+        $this->systemUtils = new \WebdriverBinary\WebDriverBinaryDownloader\Utils\SystemUtils();
+        $this->dataUtils = new \WebdriverBinary\WebDriverBinaryDownloader\Utils\DataUtils();
     }
 
     /**

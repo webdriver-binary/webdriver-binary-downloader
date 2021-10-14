@@ -1,36 +1,36 @@
 <?php
 
-namespace WebDriverBinaryDownloader\Analysers;
+namespace WebdriverBinary\WebDriverBinaryDownloader\Analysers;
 
 class EnvironmentAnalyser
 {
     /**
-     * @var \WebDriverBinaryDownloader\Interfaces\ConfigInterface
+     * @var \WebdriverBinary\WebDriverBinaryDownloader\Interfaces\ConfigInterface
      */
     private $pluginConfig;
     
     /**
-     * @var \WebDriverBinaryDownloader\Analysers\PlatformAnalyser
+     * @var \WebdriverBinary\WebDriverBinaryDownloader\Analysers\PlatformAnalyser
      */
     private $platformAnalyser;
     
     /**
-     * @var \WebDriverBinaryDownloader\Resolvers\VersionResolver
+     * @var \WebdriverBinary\WebDriverBinaryDownloader\Resolvers\VersionResolver
      */
     private $versionResolver;
 
     /**
-     * @param \WebDriverBinaryDownloader\Interfaces\ConfigInterface $pluginConfig
+     * @param \WebdriverBinary\WebDriverBinaryDownloader\Interfaces\ConfigInterface $pluginConfig
      * @param \Composer\IO\IOInterface $cliIO
      */
     public function __construct(
-        \WebDriverBinaryDownloader\Interfaces\ConfigInterface $pluginConfig,
+        \WebdriverBinary\WebDriverBinaryDownloader\Interfaces\ConfigInterface $pluginConfig,
         \Composer\IO\IOInterface $cliIO = null
     ) {
         $this->pluginConfig = $pluginConfig;
         
-        $this->platformAnalyser = new \WebDriverBinaryDownloader\Analysers\PlatformAnalyser();
-        $this->versionResolver = new \WebDriverBinaryDownloader\Resolvers\VersionResolver($cliIO);
+        $this->platformAnalyser = new \WebdriverBinary\WebDriverBinaryDownloader\Analysers\PlatformAnalyser();
+        $this->versionResolver = new \WebdriverBinary\WebDriverBinaryDownloader\Resolvers\VersionResolver($cliIO);
     }
 
     public function resolveBrowserVersion()

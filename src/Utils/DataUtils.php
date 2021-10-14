@@ -1,6 +1,6 @@
 <?php
 
-namespace WebDriverBinaryDownloader\Utils;
+namespace WebdriverBinary\WebDriverBinaryDownloader\Utils;
 
 class DataUtils
 {

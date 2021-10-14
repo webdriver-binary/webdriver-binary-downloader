@@ -1,19 +1,19 @@
 <?php
 
-namespace WebDriverBinaryDownloader\Analysers;
+namespace WebdriverBinary\WebDriverBinaryDownloader\Analysers;
 
-use WebDriverBinaryDownloader\Composer\Config as ComposerConfig;
+use WebdriverBinary\WebDriverBinaryDownloader\Composer\Config as ComposerConfig;
 
 class PackageAnalyser
 {
     /**
-     * @var \WebDriverBinaryDownloader\Utils\DataUtils
+     * @var \WebdriverBinary\WebDriverBinaryDownloader\Utils\DataUtils
      */
     private $dataUtils;
     
     public function __construct()
     {
-        $this->dataUtils = new \WebDriverBinaryDownloader\Utils\DataUtils();
+        $this->dataUtils = new \WebdriverBinary\WebDriverBinaryDownloader\Utils\DataUtils();
     }
 
     public function isPluginPackage(\Composer\Package\PackageInterface $package)

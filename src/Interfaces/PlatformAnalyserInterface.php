@@ -1,6 +1,6 @@
 <?php
 
-namespace WebDriverBinaryDownloader\Interfaces;
+namespace WebdriverBinary\WebDriverBinaryDownloader\Interfaces;
 
 interface PlatformAnalyserInterface
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace WebDriverBinaryDownloader\Composer;
+namespace WebdriverBinary\WebDriverBinaryDownloader\Composer;
 
 class Context
 {
@@ -83,6 +83,6 @@ class Context
             $name
         );
         
-        throw new \WebDriverBinaryDownloader\Exceptions\RuntimeException($message);
+        throw new \WebdriverBinary\WebDriverBinaryDownloader\Exceptions\RuntimeException($message);
     }
 }

@@ -1,11 +1,11 @@
 <?php
 
-namespace WebDriverBinaryDownloader;
+namespace WebdriverBinary\WebDriverBinaryDownloader;
 
-use WebDriverBinaryDownloader\Interfaces\ConfigInterface;
-use WebDriverBinaryDownloader\Composer\Config;
+use WebdriverBinary\WebDriverBinaryDownloader\Interfaces\ConfigInterface;
+use WebdriverBinary\WebDriverBinaryDownloader\Composer\Config;
 
-class Installer implements \WebDriverBinaryDownloader\Interfaces\InstallerInterface
+class Installer implements \WebdriverBinary\WebDriverBinaryDownloader\Interfaces\InstallerInterface
 {
     /**
      * @var \Composer\Composer
@@ -31,13 +31,13 @@ class Installer implements \WebDriverBinaryDownloader\Interfaces\InstallerInterf
     
     public function executeWithConfig(ConfigInterface $pluginConfig)
     {
-        $composerCtxFactory = new \WebDriverBinaryDownloader\Factories\ComposerContextFactory(
+        $composerCtxFactory = new \WebdriverBinary\WebDriverBinaryDownloader\Factories\ComposerContextFactory(
             $this->composerRuntime
         );
 
         $composerCtx = $composerCtxFactory->create();
 
-        $downloadStrategy = new \WebDriverBinaryDownloader\Strategies\DownloadStrategy($composerCtx);
+        $downloadStrategy = new \WebdriverBinary\WebDriverBinaryDownloader\Strategies\DownloadStrategy($composerCtx);
 
         if (!$downloadStrategy->shouldAllow()) {
             return;
@@ -47,12 +47,12 @@ class Installer implements \WebDriverBinaryDownloader\Interfaces\InstallerInterf
         
         $binaryDir = $composerConfig->get(Config::BIN_DIR);
         
-        $projectAnalyser = new \WebDriverBinaryDownloader\Analysers\ProjectAnalyser(
+        $projectAnalyser = new \WebdriverBinary\WebDriverBinaryDownloader\Analysers\ProjectAnalyser(
             $pluginConfig,
             $this->cliIO->isDebug() ? $this->cliIO : null
         );
         
-        $packageManager = new \WebDriverBinaryDownloader\Managers\PackageManager(
+        $packageManager = new \WebdriverBinary\WebDriverBinaryDownloader\Managers\PackageManager(
             $pluginConfig,
             $composerConfig->get(Config::VENDOR_DIR)
         );
@@ -87,7 +87,7 @@ class Installer implements \WebDriverBinaryDownloader\Interfaces\InstallerInterf
             sprintf('<info>Installing <comment>%s</comment> (v%s)</info>', $driverName, $version)
         );
         
-        $dlManagerFactory = new \WebDriverBinaryDownloader\Factories\DownloadManagerFactory(
+        $dlManagerFactory = new \WebdriverBinary\WebDriverBinaryDownloader\Factories\DownloadManagerFactory(
             $composerCtx,
             $this->cliIO,
             $this->composerRuntime

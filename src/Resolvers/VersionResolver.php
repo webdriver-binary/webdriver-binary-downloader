@@ -1,6 +1,6 @@
 <?php
 
-namespace WebDriverBinaryDownloader\Resolvers;
+namespace WebdriverBinary\WebDriverBinaryDownloader\Resolvers;
 
 class VersionResolver
 {
@@ -15,12 +15,12 @@ class VersionResolver
     private $versionParser;
 
     /**
-     * @var \WebDriverBinaryDownloader\Utils\StringUtils
+     * @var \WebdriverBinary\WebDriverBinaryDownloader\Utils\StringUtils
      */
     private $stringUtils;
     
     /**
-     * @var \WebDriverBinaryDownloader\Utils\DataUtils
+     * @var \WebdriverBinary\WebDriverBinaryDownloader\Utils\DataUtils
      */
     private $dataUtils;
     
@@ -31,8 +31,8 @@ class VersionResolver
         
         $this->versionParser = new \Composer\Package\Version\VersionParser();
 
-        $this->stringUtils = new \WebDriverBinaryDownloader\Utils\StringUtils();
-        $this->dataUtils = new \WebDriverBinaryDownloader\Utils\DataUtils();
+        $this->stringUtils = new \WebdriverBinary\WebDriverBinaryDownloader\Utils\StringUtils();
+        $this->dataUtils = new \WebdriverBinary\WebDriverBinaryDownloader\Utils\DataUtils();
     }
     
     public function pollForExecutableVersion(array $binaryPaths, array $versionPollingConfig)

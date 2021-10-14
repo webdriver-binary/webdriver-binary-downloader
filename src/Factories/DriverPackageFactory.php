@@ -1,6 +1,6 @@
 <?php
 
-namespace WebDriverBinaryDownloader\Factories;
+namespace WebdriverBinary\WebDriverBinaryDownloader\Factories;
 
 class DriverPackageFactory
 {

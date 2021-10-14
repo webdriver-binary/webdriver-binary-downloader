@@ -1,9 +1,9 @@
 <?php
 
-namespace WebDriverBinaryDownloader\Analysers;
+namespace WebdriverBinary\WebDriverBinaryDownloader\Analysers;
 
-use WebDriverBinaryDownloader\Interfaces\ConfigInterface;
-use WebDriverBinaryDownloader\Interfaces\PlatformAnalyserInterface as Platform;
+use WebdriverBinary\WebDriverBinaryDownloader\Interfaces\ConfigInterface;
+use WebdriverBinary\WebDriverBinaryDownloader\Interfaces\PlatformAnalyserInterface as Platform;
 
 class ProjectAnalyser
 {
@@ -13,32 +13,32 @@ class ProjectAnalyser
     private $versionParser;
 
     /**
-     * @var \WebDriverBinaryDownloader\Interfaces\ConfigInterface
+     * @var \WebdriverBinary\WebDriverBinaryDownloader\Interfaces\ConfigInterface
      */
     private $pluginConfig;
 
     /**
-     * @var \WebDriverBinaryDownloader\Analysers\EnvironmentAnalyser
+     * @var \WebdriverBinary\WebDriverBinaryDownloader\Analysers\EnvironmentAnalyser
      */
     private $environmentAnalyser;
 
     /**
-     * @var \WebDriverBinaryDownloader\Analysers\PlatformAnalyser
+     * @var \WebdriverBinary\WebDriverBinaryDownloader\Analysers\PlatformAnalyser
      */
     private $platformAnalyser;
 
     /**
-     * @var \WebDriverBinaryDownloader\Resolvers\VersionResolver
+     * @var \WebdriverBinary\WebDriverBinaryDownloader\Resolvers\VersionResolver
      */
     private $versionResolver;
 
     /**
-     * @var \WebDriverBinaryDownloader\Utils\SystemUtils
+     * @var \WebdriverBinary\WebDriverBinaryDownloader\Utils\SystemUtils
      */
     private $systemUtils;
 
     /**
-     * @var \WebDriverBinaryDownloader\Utils\DataUtils
+     * @var \WebdriverBinary\WebDriverBinaryDownloader\Utils\DataUtils
      */
     private $dataUtils;
 
@@ -48,27 +48,27 @@ class ProjectAnalyser
     private $browserVersion;
 
     /**
-     * @param \WebDriverBinaryDownloader\Interfaces\ConfigInterface $pluginConfig
+     * @param \WebdriverBinary\WebDriverBinaryDownloader\Interfaces\ConfigInterface $pluginConfig
      * @param \Composer\IO\IOInterface $cliIO
      */
     public function __construct(
-        \WebDriverBinaryDownloader\Interfaces\ConfigInterface $pluginConfig,
+        \WebdriverBinary\WebDriverBinaryDownloader\Interfaces\ConfigInterface $pluginConfig,
         \Composer\IO\IOInterface $cliIO = null
     ) {
         $this->pluginConfig = $pluginConfig;
 
-        $this->environmentAnalyser = new \WebDriverBinaryDownloader\Analysers\EnvironmentAnalyser(
+        $this->environmentAnalyser = new \WebdriverBinary\WebDriverBinaryDownloader\Analysers\EnvironmentAnalyser(
             $pluginConfig,
             $cliIO
         );
 
         $this->versionParser = new \Composer\Package\Version\VersionParser();
 
-        $this->platformAnalyser = new \WebDriverBinaryDownloader\Analysers\PlatformAnalyser();
-        $this->versionResolver = new \WebDriverBinaryDownloader\Resolvers\VersionResolver();
+        $this->platformAnalyser = new \WebdriverBinary\WebDriverBinaryDownloader\Analysers\PlatformAnalyser();
+        $this->versionResolver = new \WebdriverBinary\WebDriverBinaryDownloader\Resolvers\VersionResolver();
 
-        $this->systemUtils = new \WebDriverBinaryDownloader\Utils\SystemUtils();
-        $this->dataUtils = new \WebDriverBinaryDownloader\Utils\DataUtils();
+        $this->systemUtils = new \WebdriverBinary\WebDriverBinaryDownloader\Utils\SystemUtils();
+        $this->dataUtils = new \WebdriverBinary\WebDriverBinaryDownloader\Utils\DataUtils();
     }
 
     public function resolvePlatformSupport()

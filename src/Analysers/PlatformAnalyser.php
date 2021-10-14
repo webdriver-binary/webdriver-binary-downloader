@@ -1,8 +1,8 @@
 <?php
 
-namespace WebDriverBinaryDownloader\Analysers;
+namespace WebdriverBinary\WebDriverBinaryDownloader\Analysers;
 
-class PlatformAnalyser implements \WebDriverBinaryDownloader\Interfaces\PlatformAnalyserInterface
+class PlatformAnalyser implements \WebdriverBinary\WebDriverBinaryDownloader\Interfaces\PlatformAnalyserInterface
 {
     public function getPlatformCode()
     {
